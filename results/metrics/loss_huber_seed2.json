@@ -1,0 +1,14 @@
+{
+  "MAE": 7.536384105682373,
+  "RMSE": 10.081760714720753,
+  "R2": 0.6871564388275146,
+  "seed": 2,
+  "params": 360321,
+  "loss_fn": "huber",
+  "weight_decay": 0.0001,
+  "selection": "best-val",
+  "epochs_run": 20,
+  "train_time_sec": 214.1,
+  "final_train_loss": 33.44952635763694,
+  "final_val_loss": 28.795070654580996
+}

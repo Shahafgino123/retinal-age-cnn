@@ -1,0 +1,14 @@
+{
+  "MAE": 7.936506748199463,
+  "RMSE": 10.403519739079933,
+  "R2": 0.6668689250946045,
+  "seed": 0,
+  "params": 359446,
+  "loss_fn": "mse",
+  "weight_decay": 0.0001,
+  "selection": "best-val",
+  "epochs_run": 20,
+  "train_time_sec": 368.7,
+  "final_train_loss": 131.80824102701845,
+  "final_val_loss": 120.70520002156876
+}

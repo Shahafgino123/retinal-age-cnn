@@ -1,0 +1,3 @@
+config,n_images,share_of_saliency_in_top10pct_pixels,corr_with_local_contrast,centre_over_edge
+cnn_all,256,0.218,0.158,1.322
+arch_7x7,256,0.187,0.128,2.244
