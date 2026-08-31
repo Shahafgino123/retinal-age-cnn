@@ -1,0 +1,15 @@
+# Python
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.venv/
+venv/
+
+# macOS
+.DS_Store
+
+# Data: the image cache is several GB and is rebuilt by
+# notebooks/kaggle_01_prepare_data.ipynb
+data/*
+!data/.gitkeep
+*.zip
