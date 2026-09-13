@@ -52,7 +52,9 @@ Against the `cnn_plain` anchor (8.129):
 | all three | +0.54 | worse than any one alone |
 
 The interaction is the interesting part: combining three regularizers is
-**+0.71 years worse** than the best single one. The model has 360k parameters
+**+0.71 years worse than additivity predicts** (8.672 measured against the
+7.97 the individual deltas sum to) and **+1.02 years worse than the best single
+one**, weight decay. The model has 360k parameters
 and 6,902 training images; it is not in the regime where stacking regularization
 pays. Note also that variance collapses as regularization is added — sd goes
 from 0.49 (`cnn_plain`) to 0.07 (`cnn_all`) — which is the bias–variance
@@ -105,6 +107,8 @@ in the README.
 `results/metrics/cnn_all_error_by_age_group.csv`
 Figures: `cnn_all_mae_by_age_group.png`, `cnn_all_bias_by_age_group.png`,
 `cnn_all_age_gap_distribution.png`
+The Hebrew report prints `cnn_all_mae_by_age_group_report.png` — same numbers,
+re-rendered larger for print.
 
 | age group | n | MAE | bias | reliable |
 |---|---|---|---|---|
@@ -202,6 +206,8 @@ vascular structure.
 
 `results/metrics/cnn_all_age_gap_by_condition.csv`, `..._gap_correction_diag.csv`
 Figure: `cnn_all_age_gap_by_condition.png`
+The Hebrew report prints `cnn_all_age_gap_by_condition_report.png` — same
+numbers, laid out one row per finding.
 
 Uses the **B-corrected** gap. The raw gap correlates −0.677 with age, so
 comparing raw gaps between patient groups would mostly compare their ages.
