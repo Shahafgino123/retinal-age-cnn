@@ -32,8 +32,9 @@ touched only for final evaluation. Model selection used validation.
 `sd` is the sample standard deviation across the three seeds.
 
 **Read the sd column before reading the ranking.** See limitation 1 in the
-README: differences under about half a year are inside the noise floor. The top
-six configurations are, for practical purposes, tied.
+README: differences under about half a year are inside the noise floor. Every
+configuration within half a year of the best (nine of the twelve, down to
+`cnn_plain`) is, for practical purposes, tied with it.
 
 ### The null model
 
@@ -244,8 +245,8 @@ contributes less than a tenth of a year. The more likely explanation is that
 these labels track how patients entered the dataset — referral route, screening
 programme, imaging equipment — rather than retinal biology.
 
-**Report this as an observation with its direction stated, not as a finding.**
-No significance tests were run and none should be: this is a description of a
+**This is an observation with its direction stated, not a finding.**
+No significance tests were run: this is a description of a
 pattern in 1,462 images, and the honest conclusion is that it raises questions
 about the label semantics rather than answering anything about biological
 ageing.
@@ -254,8 +255,7 @@ ageing.
 
 ## 6. Methodological problems we found and fixed
 
-Worth a section in the report, because most of them would have silently
-produced wrong conclusions.
+Most of these would have silently produced wrong conclusions.
 
 | problem | how it was caught | consequence if missed |
 |---|---|---|

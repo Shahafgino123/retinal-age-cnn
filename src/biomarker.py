@@ -26,8 +26,8 @@ Two things make this analysis easy to get wrong, and both are handled here.
    test split is 1,462 images. Running p-values on that would produce
    numbers with no power behind them and invite exactly the wrong
    conclusion. This module reports group sizes, means, spreads and an
-   effect size, and nothing else. The report should say "we observed an
-   association of this size", never "we found that X causes Y".
+   effect size, and nothing else. Results are phrased as "we observed an
+   association of this size", never as "X causes Y".
 
 Run:
     from src.biomarker import run_biomarker_analysis

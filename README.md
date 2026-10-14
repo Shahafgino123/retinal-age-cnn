@@ -41,7 +41,9 @@ results/
   figures/           85 PNGs — learning curves, pred-vs-true, and the analyses
   checkpoints/       36 trained models (config x seed)
 reports/
-  Final_Report_Retinal_Age.pdf  the final report (Hebrew)
+  Final_Report_Retinal_Age.pdf        the final report (Hebrew)
+  Presentation_RetinaCNN_Final.pdf    the presentation (Hebrew)
+  Presentation_RetinaCNN_Final.html   the same presentation, interactive (open in a browser)
 docs/
   RESULTS.md         every result with its interpretation
 ```

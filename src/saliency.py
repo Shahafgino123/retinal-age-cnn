@@ -119,7 +119,7 @@ def contrast_proxy(img_chw):
 
     This is a PROXY, not a vessel segmentation. A high correlation
     between saliency and this map is suggestive, not proof that the model
-    looks at vessels, and the report should say so.
+    looks at vessels.
     """
     gray = img_chw.mean(axis=0)
     gy, gx = np.gradient(gray)
