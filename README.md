@@ -17,7 +17,7 @@ gap between predicted and real age relates to anything clinical.
 |---|---|---|---|
 | predict the training mean (null) | 14.32 | 18.03 | 0.00 |
 | ridge on hand-crafted features | 9.55 | 12.64 | 0.51 |
-| **best CNN** (`cnn_aug`) | **7.64 ± 0.11** | 10.16 | 0.68 |
+| **best CNN** (`cnn_aug`) | **7.64 ± 0.13** | 10.16 | 0.68 |
 
 Every CNN configuration beats both baselines. The best is a 360k-parameter
 network with weight decay, dropout, early stopping and light augmentation,
@@ -36,16 +36,12 @@ src/                 all project code (see below)
 notebooks/
   kaggle_01_prepare_data.ipynb        one-time: build the 224px image cache
   kaggle_02_run_all_experiments.ipynb every experiment, in the order they ran
-  legacy/                             superseded notebooks, kept for provenance
 results/
   metrics/           one JSON per run, plus the analysis CSVs
-  figures/           83 PNGs — learning curves, pred-vs-true, and the analyses
+  figures/           85 PNGs — learning curves, pred-vs-true, and the analyses
   checkpoints/       36 trained models (config x seed)
-reports/
-  REPORT_SKELETON.md the report outline, with every verified number
 docs/
   RESULTS.md         every result with its interpretation
-  FOR_ADI.md         handoff notes for the write-up (Hebrew)
 ```
 
 ### The code
@@ -118,10 +114,10 @@ once, which meant nothing could be attributed to anything.
 | `cnn_dropout` | `cnn_plain` | dropout |
 | `cnn_wd` | `cnn_plain` | weight decay |
 | `cnn_es` | `cnn_plain` | early stopping |
-| `cnn_all` | `cnn_plain` | all three together |
+| `cnn_all` | `cnn_plain` | all three together (epoch cap 15 → 20, but early stopping ended every seed at epoch 10–14, so the cap never bound) |
 | `cnn_aug` | `cnn_all` | augmentation |
 | `cnn_aug_long` | `cnn_aug` | epoch budget 20 → 40 |
-| `arch_7x7` | `cnn_all` | 7×7 filters, parameter-matched |
+| `arch_7x7` | `cnn_all` | 7×7 filters, parameter-matched (3 blocks instead of 4, so receptive field and depth change together) |
 | `arch_valid` | `cnn_all` | valid padding, parameter-identical |
 | `arch_drop_early` | `cnn_all` | dropout inside the conv blocks |
 | `loss_l1` | `cnn_all` | L1 loss |

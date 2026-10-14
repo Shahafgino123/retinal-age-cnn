@@ -12,22 +12,24 @@ touched only for final evaluation. Model selection used validation.
 
 `results/metrics/*.json`
 
-| config | MAE | sd | RMSE | R² | params | epochs run |
+| config | MAE | sd | RMSE | R² | params | epochs run (seeds 0, 1, 2) |
 |---|---|---|---|---|---|---|
-| `cnn_aug` | **7.638** | 0.108 | 10.161 | 0.682 | 360,321 | 20, 20, 20 |
-| `cnn_wd` | 7.655 | 0.128 | 10.154 | 0.683 | 360,321 | 15, 15, 15 |
-| `loss_huber` | 7.722 | 0.220 | 10.416 | 0.666 | 360,321 | 20, 20, 19 |
-| `arch_valid` | 7.888 | 0.440 | 10.511 | 0.659 | 360,321 | 20, 11, 20 |
-| `cnn_es` | 7.970 | 0.249 | 10.587 | 0.655 | 360,321 | 15, 15, 12 |
-| `arch_7x7` | 8.018 | 0.065 | 10.632 | 0.652 | 359,446 | 20, 20, 20 |
-| `cnn_aug_long` | 8.032 | 0.599 | 10.651 | 0.649 | 360,321 | 30, 9, 21 |
-| `loss_l1` | 8.109 | 0.116 | 10.847 | 0.638 | 360,321 | 19, 15, 20 |
-| `cnn_plain` | 8.129 | 0.400 | 10.664 | 0.649 | 360,321 | 15, 15, 15 |
-| `cnn_dropout` | 8.600 | 0.495 | 11.187 | 0.614 | 360,321 | 15, 15, 15 |
-| `cnn_all` | 8.672 | 0.070 | 11.457 | 0.596 | 360,321 | 14, 10, 13 |
-| `arch_drop_early` | 9.051 | 0.084 | 12.056 | 0.553 | 360,321 | 19, 20, 20 |
+| `cnn_aug` | **7.638** | 0.132 | 10.161 | 0.682 | 360,321 | 20, 20, 20 |
+| `cnn_wd` | 7.655 | 0.157 | 10.154 | 0.683 | 360,321 | 15, 15, 15 |
+| `loss_huber` | 7.722 | 0.270 | 10.416 | 0.666 | 360,321 | 20, 19, 20 |
+| `arch_valid` | 7.888 | 0.539 | 10.511 | 0.659 | 360,321 | 11, 20, 20 |
+| `cnn_es` | 7.970 | 0.305 | 10.587 | 0.655 | 360,321 | 12, 15, 15 |
+| `arch_7x7` | 8.018 | 0.079 | 10.632 | 0.652 | 359,446 | 20, 20, 20 |
+| `cnn_aug_long` | 8.032 | 0.733 | 10.651 | 0.649 | 360,321 | 21, 9, 30 |
+| `loss_l1` | 8.109 | 0.142 | 10.847 | 0.638 | 360,321 | 15, 19, 20 |
+| `cnn_plain` | 8.129 | 0.490 | 10.664 | 0.649 | 360,321 | 15, 15, 15 |
+| `cnn_dropout` | 8.600 | 0.606 | 11.187 | 0.614 | 360,321 | 15, 15, 15 |
+| `cnn_all` | 8.672 | 0.085 | 11.457 | 0.596 | 360,321 | 10, 13, 14 |
+| `arch_drop_early` | 9.051 | 0.103 | 12.056 | 0.553 | 360,321 | 20, 19, 20 |
 | `ridge_linear` | 9.553 | — | 12.645 | 0.508 | — | — |
 | `mean_predictor` | 14.316 | — | 18.025 | 0.000 | — | — |
+
+`sd` is the sample standard deviation across the three seeds.
 
 **Read the sd column before reading the ranking.** See limitation 1 in the
 README: differences under about half a year are inside the noise floor. The top
@@ -44,6 +46,9 @@ came out identical in all four sessions.
 
 Against the `cnn_plain` anchor (8.129):
 
+(`cnn_all` has a 20-epoch cap against `cnn_plain`'s 15, but early stopping
+ended its three seeds at epochs 10, 13 and 14, so the cap never came into play.)
+
 | factor | Δ MAE | reading |
 |---|---|---|
 | weight decay | **−0.47** | the only regularizer that helps |
@@ -57,7 +62,7 @@ The interaction is the interesting part: combining three regularizers is
 one**, weight decay. The model has 360k parameters
 and 6,902 training images; it is not in the regime where stacking regularization
 pays. Note also that variance collapses as regularization is added — sd goes
-from 0.49 (`cnn_plain`) to 0.07 (`cnn_all`) — which is the bias–variance
+from 0.49 (`cnn_plain`) to 0.085 (`cnn_all`) — which is the bias–variance
 tradeoff appearing directly in the seed spread.
 
 ### Ablations against `cnn_all` (8.672)
