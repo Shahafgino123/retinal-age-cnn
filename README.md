@@ -40,6 +40,8 @@ results/
   metrics/           one JSON per run, plus the analysis CSVs
   figures/           85 PNGs — learning curves, pred-vs-true, and the analyses
   checkpoints/       36 trained models (config x seed)
+reports/
+  Final_Report_Retinal_Age.pdf  the final report (Hebrew)
 docs/
   RESULTS.md         every result with its interpretation
 ```
